@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<head>
+    <title>Lab7</title>
+    <meta charset='UTF-8' />
+    <style>
+        *{
+            margin: 0;
+        }
+        html, body {
+            height: 100%;
+            font-family: sans-serif;
+        }
+        p::selection {
+            color: green;
+            background: #e1e5eb;
+        }
+        .main {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            min-height: calc(100% - 50px);
+            margin-bottom: -25px;
+            overflow: auto;
+            text-align: center;
+        }
+        .main:after {
+            content: "";
+            display: block;
+            height: 25px; 
+        }
+        .wall{
+            width: 100%;
+            display: flex;
+        }
+        .post{
+            text-align: center;
+            font-size: 14px;
+        }
+        .header{
+            width: 300px;
+            font-size: 25px;
+            line-height: 30px;
+            color: white;
+            background: red;
+            border: 2px solid black;
+            box-sizing: border-box;
+            float: left;
+            height: 40px;
+        }
+        .header:hover{
+            cursor: pointer;
+        }
+        .container{
+            position: relative;
+            float: left;
+            display: flex;
+            min-width: 80px;
+            height: 400px;
+            width: 450px;
+        }
+        .container img{
+            width: 90%;
+            max-width: 450px;
+            height: 300px;
+            margin: 25px;
+        }
+    </style>
+ </head>
+ <body>
+    <div class="main">
+        <div class='wall'>
+            <div class='post'>
+                   <div class='header' onclick='left()'>Левая колонка</div>
+                   <div class='header' onclick='both()'>Обе две</div>
+                   <div class='header' onclick='right()'>Правая Колонка</div>
+                   <div class='container' id='first' style='background: blue;'>
+                        <img style='right: 0px;position: absolute;' src='cat.jpg' alt='cat'>
+                    </div>
+                   <div class='container' id='second' style='background: green;'>
+                        <img src='dog.jpg' alt='dog'>
+                   </div>
+            </div>
+        </div>
+    </div>
+ </body>
+<script>
+document.querySelectorAll('.header')[0].oncliсk = function() {left()};
+document.querySelectorAll('.header')[1].oncliсk = function() {both()};
+document.querySelectorAll('.header')[2].oncliсk = function() {right()};
+table.onmouseout = function(event) {
+  let target = event.target;
+  target.style.background = '';
+};
+function left(){
+    document.getElementById('second').querySelector('img').style.display = 'none';
+    document.getElementById('first').querySelector('img').style.display = '';
+    document.getElementById('second').style.width = '100px';
+    document.getElementById('first').style.width = '800px';
+}
+function both(){
+    document.getElementById('second').querySelector('img').style.display = '';
+    document.getElementById('first').querySelector('img').style.display = '';
+    document.getElementById('second').style.width = '450px';
+    document.getElementById('first').style.width = '450px';
+}
+function right(){
+    document.getElementById('first').querySelector('img').style.display = 'none';
+    document.getElementById('second').querySelector('img').style.display = '';
+    document.getElementById('first').style.width = '100px';
+    document.getElementById('second').style.width = '800px';
+}
+</script>
+</html>
